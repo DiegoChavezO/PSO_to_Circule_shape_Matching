@@ -1,3 +1,9 @@
+'''
+    Proyecto final
+    Elaborado por:
+        -Diego Chávez Ortiz
+        -Denzel Omar Vázquez Pérez
+'''
 import math
 
 def objetivo_figura(circulo, pixels):

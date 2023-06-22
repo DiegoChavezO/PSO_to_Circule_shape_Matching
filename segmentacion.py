@@ -1,7 +1,9 @@
-'''from PIL import Image
-import numpy as np
-import math
-import copy'''
+'''
+    Proyecto final
+    Elaborado por:
+        -Diego Chávez Ortiz
+        -Denzel Omar Vázquez Pérez
+'''
 
 def segmentar(image_data,ancho,alto):
 	contador=0
@@ -22,15 +24,15 @@ def segmentar(image_data,ancho,alto):
 			dy2 = dy.copy()
 		for j in range(0, alto):
 			pixel_value = image_data[i, j]
-			if(pixel_value!=254):
+			if(pixel_value<254):
 				aux.append([i,j])
 			nj=j+1
 			if(nj<alto):
-				if(pixel_value==254 and image_data[i,nj]!=254):
+				if(pixel_value>=254 and image_data[i,nj]<254):
 					if contador==0:
 						dx=[i,nj]
 					contador+=1
-				elif(contador==2 and image_data[i,nj]==254):
+				elif(contador==2 and image_data[i,nj]>=254):
 					dy=[i,j]
 					if(dx2[1]+2<=dx[1] and dy2[1]<dy[1]):
 						var = False
@@ -51,7 +53,7 @@ def corregir(cadena,image_data):
 	for i in range(len(cadena)):
 		if(cadena[i][len(cadena[i])-1][1]>cadlar):
 			cadlar = cadena[i][len(cadena[i])-1][1]
-	limite=[cadena[len(cadena)-1][0][0],cadlar]
+	limite=[cadena[len(cadena)-1][0][0]+5,cadlar]
 	lista = [elemento for sublista in cadena for elemento in sublista]
 	contador = 0 
 	while(True):
@@ -70,7 +72,7 @@ def corregir(cadena,image_data):
 def mostrar(image_data,ancho,alto):
 	for i in range(0,ancho):
 		for j in range(0,alto):
-			if(image_data[i,j]==254):
+			if(image_data[i,j]>=254):
 				print("-",end="")
 			else:
 				print(0,end="")
@@ -92,5 +94,3 @@ def delinear(cadena):
         punto_medio = x1 + cont//2
         lista_medios.append([cadena[i][0][0],punto_medio])
     return lista_medios
-
-
