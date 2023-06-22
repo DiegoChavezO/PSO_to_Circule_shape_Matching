@@ -9,9 +9,5 @@ def objetivo_figura(circulo, pixels):
         # formula DISTANCIA EUCLIDEANA
         distance = math.sqrt((x - center_x) ** 2 + (y - center_y) ** 2) #duda en el radio
         # Si el punto es negro, sumar su distancia al total
-        if distance - radius <= 0.05:
-            todal_distance += 0
-        else:  
-            total_distance += abs(distance - radius)
-    
+        total_distance += abs(distance - radius)
     return total_distance

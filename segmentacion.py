@@ -76,21 +76,21 @@ def mostrar(image_data,ancho,alto):
 				print(0,end="")
 		print()
 
-'''# Open the BMP image file
-image = Image.open("imagenes/imagen1.bmp")
+def delinear(cadena):
+    lista_medios = []
+    for i in range(len(cadena)):
+        cont= 0
+        x1 = cadena[i][0][1]
+        for j in range(1, len(cadena[i])):
+            if (cadena[i][j-1][1] == cadena[i][j][1]-1):
+                cont = cont + 1
+            else:
+                cont = 0
+                punto_medio = x1 + cont//2
+                lista_medios.append([cadena[i][j][0],punto_medio])
+                x1 = cadena[i][j][1]
+        punto_medio = x1 + cont//2
+        lista_medios.append([cadena[i][0][0],punto_medio])
+    return lista_medios
 
-# Get the image data as a numpy array
-image_data = np.array(image)
-# Display the shape of the image data
-print("Image shape:", image_data.shape)
-ancho, alto = image_data.shape
-print('ancho', ancho, 'alto', alto)
-
-cadena = segmentar(image_data)
-print(cadena)
-mostrar(image_data)
-lista = corregir(cadena,image_data)
-print(lista)
-borrarCirculo(lista,image_data)
-mostrar(image_data)'''
 
